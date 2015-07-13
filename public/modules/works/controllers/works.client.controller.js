@@ -14,6 +14,8 @@ angular.module('works').controller('WorksController', ['$scope', '$stateParams',
 				projectName: this.projectName,
 				projectDescription: this.projectDescription,
 				projectShortDescription: this.projectShortDescription,
+				projectDescriptionen: this.projectDescriptionen,
+				projectShortDescriptionen: this.projectShortDescriptionen,
 				projectImages: this.projectImages,
 				projectSliderImg: this.projectSliderImg,
 				projectOrder: this.projectOrder
