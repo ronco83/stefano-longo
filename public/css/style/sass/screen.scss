@@ -1,0 +1,1318 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+@import "grid";
+@import "compass";
+@import "compass/css3";
+
+//MIXIN e utili
+
+
+
+@mixin centerMe ($left , $top , $tranLeft , $tranTop){
+  left: $left;
+  top: $top;
+  @include translate($tranLeft , $tranTop);
+}
+
+.centerMe {
+  @include centerMe(50% , 50% , -50% , -50%);
+  position: absolute
+}
+
+.absolute {
+  position: absolute
+}
+
+.relative {
+  position: relative
+}
+
+.full-height {
+  height: 100%
+}
+
+.full-width {
+  width: 100%
+}
+
+.full-area {
+  width: 100%;
+  height: 100%
+}
+
+.right {
+  float: right !important
+}
+
+@for $i from 0 through 100 {
+  .top-#{$i} {
+    top: $i * 1%
+  }
+  .bottom-#{$i} {
+    bottom: $i * 1%
+  }
+  .left-#{$i} {
+    left: $i * 1%
+  }
+  .right-#{$i} {
+    right: $i * 1%
+  }
+}
+
+//variables
+$red: #960000;
+
+//variables end
+
+
+
+html {
+  overflow: hidden;
+  height:100%;
+  @media screen and(max-width: $break-small){
+    font-size: 9px;
+  }
+}
+
+body {
+  font-family: "Courier New";
+  line-height: 1.5;
+  font-weight: 100;
+  font-size: 2rem;
+  height: 100%;
+  width:100%;
+  position: absolute;
+  overflow:hidden;
+  background: none !important;
+  background-color: transparent !important;
+  .content {
+    height: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    margin-top: 0;
+    border-top: 100px solid transparent;
+    padding: 5px;
+    padding-bottom: 20px !important;
+    @include transition(0.3s border-width)
+  }
+  .container {
+    .row {
+      margin-left: -5px;
+      margin-right: -5px;
+    }
+  }
+}
+
+h1 , h2 , h3 , h4 , h5 , h6 {
+  font-family: 'Montserrat', sans-serif;
+  text-align: left;
+  color: black;
+  text-transform: uppercase;
+  font-weight: 400
+}
+
+h1 {
+  padding: 20px 0;
+  margin: 50px auto;
+  font-size: 4.5rem;
+}
+
+h2 {
+  font-size: 6rem;
+  margin: 15px auto;
+  padding: 15px auto;
+}
+
+p {
+  padding-bottom: 10px;
+  font-size: 1.9rem;
+}
+
+a , a:visited{
+  color: rgba(0,0,0,0.6);
+  &:hover, &:active , &:focus {
+    text-decoration: none;
+    color: black
+  }
+}
+
+.background {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  left: 0;
+  overflow:hidden;
+  top: 0;
+  z-index: -2;
+  div {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    height: 100%;
+    &:first-of-type {
+      background: url('../../../img/occhiali.jpg');
+      background-size: cover;
+      background-position: center;
+      opacity: 1 !important;
+    }
+    &:nth-of-type(2){
+      background: url('../../../img/html.jpg');
+      background-size: cover;
+      background-position: center
+    }
+    &:last-of-type{
+      background: url('../../../img/bg1.png');
+      background-size: cover;
+      background-position: center
+    }
+  }
+}
+
+#header {
+  background: none;
+  line-height: 100px;
+  font-family: 'Montserrat', sans-serif;
+  @include transition(1s);
+  border-bottom: 1px solid #ededed;
+  position: fixed;
+  overflow: hidden;
+  @include centerMe(50% , 0 , -50% , 0);
+  top: 0;
+  height: 100px;
+  z-index: 99;
+  font-size: 2rem;
+  text-align: left;
+  @media screen and (max-width: $break-large) {
+    width: calc( 100% - 20px );
+  }
+  @media screen and (max-width: 480px) {
+    font-size: 1.5rem;
+  }
+  h1 , h3 {
+    font-size: inherit;
+    letter-spacing: 15px;
+    line-height: 100px;
+    margin: 0 !important;
+    padding: 0 !important;
+    float:left;
+    color: white;
+    @media screen and (max-width: 480px) {
+      letter-spacing: 5px;
+    }
+    a {
+      color: black
+    }
+  }
+  h3 {
+    color: black
+  }
+  h2 {
+    height: 50px;
+    padding: 0;
+    margin: 0;
+    border: none
+  }
+  img {
+    height: auto;
+    width: 310px;
+    display: block;
+    float: left
+  }
+  .sidebar-menu {
+    font-family: 'Montserrat', sans-serif;
+    list-style-type: none;
+    width: 300px;
+    margin: 0;
+    padding: 0;
+    @include centerMe(0 , 50% , 0 , -50%);
+    position: absolute;
+    font-weight: bold;
+    font-size: 1.5rem;
+    li {
+      @include transition(1s);
+      a {
+        padding: 30px 0;
+        display: block;
+      }
+      &:first-of-type a:before{
+        background: url('../../../img/about-me-icon.png');
+        background-size: 80%;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+      &:nth-of-type(2) a:before{
+        background: url('../../../img/works-icon.png');
+        background-size: 80%;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      &:last-of-type a:before{
+        background: url('../../../img/contacts-icon.png');
+        background-size: 80%;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+      a:before {
+        content:'';
+        width: 50px;
+        height: 50px;
+        margin-right: 30px;
+        display: inline-block;
+        vertical-align: middle;
+      }
+    }
+  }
+}
+
+.thepot {
+  display: none !important
+}
+
+.languageSwitch {
+  cursor: pointer;
+  margin-right: 10px;
+  font-weight: 400;
+  color:black;
+  float: right;
+  font-family: 'Montserrat', sans-serif;
+  text-align: center;
+  @media screen and (max-width: $break-small) {
+    display: none;
+  }
+  &.home {
+    color: white;
+    @media screen and (max-width: $break-small) {
+      display: none;
+    }
+  }
+  &.inMenu {
+    display: none;
+    @media screen and (max-width: $break-small) {
+      display: block;
+      width: 100%;
+      span {
+        @include inline-block;
+        padding: 40px;
+      }
+    }
+  }
+}
+
+menu {
+  padding: 0 !important;
+  margin: 0! important
+}
+
+body .menuHp{
+  font-family: 'Montserrat', sans-serif;
+  position: relative;
+  display: block;
+  padding: 0;
+  text-align: center;
+  z-index: 2;
+  margin: 100px auto;
+  list-style-type: none;
+  @media screen and(max-width: $break-large){
+    margin: 55px auto;
+  }
+
+  @media screen and(max-width: $break-medium) and (min-width: $break-small) and (orientation: portrait){
+    position: fixed;
+    width: 100%;
+    @include centerMe(50% , 35% , -50% , -50%)
+  }
+
+  @media screen and(max-width: $break-small){
+    margin: 10px 0 0 0;
+    width: 100%;
+  }
+
+  @media screen and(max-width: $break-small) and (orientation: landscape) {
+    margin: 40px 0 0;
+  }
+
+  li {
+    position: relative;
+    font-weight: bold;
+    overflow: hidden;
+    font-size: 6rem;
+    @media screen and(max-width: 480px) and (orientation: portrait) {
+      width: 50%;
+      float: none;
+      margin: auto;
+    }
+    a {
+      color: rgba(255,255,255,1);
+    }
+    & > div {
+      width: 100%;
+      height: 0;
+      padding-bottom: 100%;
+    }
+    &:nth-of-type(2){
+      border-left: 1px solid #ededed;
+      border-right: 1px solid #ededed;
+      @media screen and(max-width: 480px) and (orientation: portrait) {
+        border-left: none;
+        border-right: none;
+        border-top: 1px solid #ededed;
+        border-bottom: 1px solid #ededed;
+      }
+    }
+  }
+  .front {
+    display: block;
+    cursor: pointer;
+    position: absolute;
+    @include backface-visibility(hidden !important);
+    height: 0;
+    width: 90%;
+    top: 5%;
+    left: 5%;
+    padding-bottom: 90%;
+    overflow:hidden;
+    line-height: 100px;
+    z-index: 2;
+    svg {
+      width: 500px;
+      height: 500px;
+      max-width: 70%;
+      max-height: 70%;
+      position: absolute;
+      @include centerMe(50%, 50%, -50%, -50%);
+      fill: rgba(255,255,255,0.8);
+      &:hover {
+        fill: white;
+      }
+    }
+  }
+
+  .back {
+    display: block;
+    @include backface-visibility(hidden !important);
+    left:0;
+    position: absolute;
+    margin-top: calc( 50% - 3rem  );
+    width: 100%;
+    @include transform(rotateY(180deg));
+    z-index:1;
+    color: rgba(255,255,255,0.8);
+    &:hover {
+      color: white
+    }
+    @media screen and (max-width:$break-large) {
+      font-size: 4.5rem;
+      margin-top: calc( 50% - 2.25rem );
+    }
+    @media screen and (max-width:$break-small) {
+      font-size: 3.5rem;
+      margin-top: calc( 50% - 1.75rem );
+      color: white
+    }
+    @media screen and (max-width:480px) {
+      font-size: 2.5rem;
+      margin-top: calc( 50% - 1.25rem );
+    }
+  }
+}
+
+.whiteBg {
+  position: fixed; background: rgba(255,255,255,0.9); width: 100%; height: 100%; z-index: -1; top: 0;
+  @include transition(2s)
+}
+
+.blackBg {
+  position: fixed; height: 100%; width: 100%; top: 0; z-index: -1;
+  background: rgba(0,0,0,0.3)
+}
+
+
+
+.sliders {
+  position: relative;
+  background-repeat: no-repeat;
+  border-bottom: 1px solid #ededed;
+  margin-bottom: 50px;
+  @media screen and (max-width: $break-small){
+    display: none
+  }
+  img {
+    visibility: hidden;
+    width: 95%;
+    max-width: 1200px;
+    position: relative;
+    margin: auto;
+    display: block;
+    @include transition(0.3s);
+    padding-bottom: 50px;
+    @media screen and (max-width: $break-large){
+      width: 100%;
+    }
+  }
+  .bx-wrapper img {
+    visibility: visible
+  }
+  ul {
+    padding: 0 !important;
+    margin: 0 !important;
+    list-style-type: none
+  }
+  .right.carousel-control, .left.carousel-control {
+    display: none
+  }
+
+  .carousel-caption {
+    opacity:0;
+    @include transition(0.2s);
+    @extend .centerMe;
+    width: 100%;
+    padding: 0;
+    z-index: 9;
+    @include text-shadow(#000000 0px 0px 0px);
+    text-align: center;
+    color: black;
+    h3 {
+      font-family: 'Montserrat' , sans-serif;
+      font-size: 5rem;
+      text-transform: none;
+      text-align: center;
+      padding: (2*$gutter);
+      margin: 0;
+    }
+    p {
+      font-family: 'Montserrat' , sans-serif;
+      font-size: 2rem;
+      width: 100%;
+      padding: (2*$gutter);
+      margin: 0
+    }
+    a {
+      display: inline-block;
+      padding: (2*$gutter);
+      background: none;
+      border: 1px solid black;
+      @include border-radius(5px);
+      margin: 0
+    }
+  }
+}
+
+.cv {
+  display: inline-block;
+  padding: $gutter;
+  background: none;
+  border: 1px solid black;
+  @include transition(0.3s);
+  @include border-radius(5px);
+  margin: 50px 0;
+  font-family: "Montserrat" , sans-serif;
+  font-weight: 400;
+  &:hover {
+    background: black;
+    color: white
+  }
+}
+
+.works {
+  position: relative;
+  height: 0;
+  padding-bottom: 100%;
+  margin: $gutter 0;
+  background: rgba(0,0,0,0.05);
+  @include transition(0.3s);
+  &>div {
+    @include transition(0.3s);
+    position: absolute;
+    width: 100%;
+    @include centerMe( 0 , 50% , 0 , -1.5rem);
+  }
+  h3 {
+    padding: 0 $gutter;
+    text-align: center;
+    margin: 0;
+    font-size: 3rem;
+    text-transform: none;
+    @include transition(0.3s);
+  }
+
+  p {
+    opacity: 0;
+    @include transition(0.3s);
+    font-size: 2rem;
+    padding: $gutter;
+    text-align: center;
+    margin: 0;
+  }
+
+  &.open {
+    background: rgba(0,0,0,0.3);
+    &>div {
+      @include centerMe( 0 , 50% , 0 , -50%);
+    }
+    h3 {
+      color: white;
+    }
+    p {
+      opacity: 1;
+      padding-top: 5%;
+      color: white;
+    }
+    a {
+      display: inline-block;
+      padding: $gutter;
+      background: none;
+      border: 1px solid white;
+      @include border-radius(5px);
+      color: white;
+      font-family: 'Montserrat' , sans-serif;
+      font-weight: 400;
+    }
+  }
+
+  .colonna-md-4 {
+    padding-top: $gutter;
+    padding-bottom: $gutter;
+  }
+}
+
+.work {
+  .workslider {
+    img {
+      width: 100%;
+      max-width: 1280px;
+      display: block;
+      margin: auto;
+      position: relative
+    }
+  }
+  .roles {
+    h3 {
+      padding: 0 0 50px;
+      margin: 0;
+    }
+    img {
+      width: 50px;
+      margin-right: 50px;
+    }
+    padding-bottom: 40px;
+    margin-bottom: 60px;
+    border-bottom: 1px solid #ededed;
+  }
+
+  .description {
+    padding-bottom: 40px;
+    margin-bottom: 60px;
+    border-bottom: 1px solid #ededed;
+    p {
+      a {
+        display: block;
+        text-align: center;
+        font-family: "Montserrat" , sans-serif;
+        width: 200px;
+        position: relative;
+        margin: auto;
+        margin-top: 50px;
+        padding: $gutter 20px;
+        border: 1px solid black;
+        @include border-radius(5px);
+        @include transition(0.3s);
+        &:hover {
+          background: black;
+          color: white;
+          border: 1px solid white;
+        }
+      }
+    }
+  }
+
+  h1 {
+    text-transform: none;
+  }
+  h3 {
+    text-transform: none;
+  }
+}
+
+.bx-wrapper {
+  width: 100% !important;
+  .bx-window {
+    width: 100% !important;
+  }
+  ul {
+    padding-left: 0;
+    margin-left: 0;
+    li {
+      position: relative
+    }
+  }
+  .bx-pager {
+    display: none
+  }
+
+
+  .bx-next , .bx-prev {
+    color: rgba(0,0,0,0.3);
+    position: absolute;
+    @include centerMe(auto , 50% , 0 , -75%);
+    font-size: 5rem;
+    font-weight: bold;
+    z-index: 99999;
+    @include transition(0.3s);
+    &:hover {
+      color: black;
+    }
+    @media screen and (max-width:$break-large) {
+      display: none
+    }
+  }
+  .bx-prev {
+    left: 0;
+  }
+  .bx-next {
+    right: 0;
+  }
+}
+
+
+body .claim {
+  color: white;
+  font-size: 3.5rem;
+  text-align: center;
+  text-transform: none;
+  border-top: 1px solid #ededed;
+  padding: 75px 10px 20px;
+  word-spacing: 10px;
+  line-height: 2;
+  width: calc( 100% - 20px );
+  @media screen and(max-width: $break-medium) and (min-width: $break-small) and (orientation: portrait){
+    position: fixed;
+    left: 10px;
+    bottom: 15%;
+    border: none;
+  }
+
+  @media screen and (max-width: $break-small) {
+    border: none;
+    padding: 20px;
+    margin: 10px auto 0;
+    font-size: 2rem;
+  }
+}
+
+.carousel.fading {
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: 0;
+  .carousel-inner {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    .item {
+      display: block;
+      position: absolute;
+      left: 0 !important;
+      width: 100%;
+      opacity: 0;
+      @include transition(0.6s);
+      &.active, &.next.left {
+        opacity: 1;
+      }
+      &.next, &.active.left {
+        opacity: 0;
+      }
+    }
+  }
+}
+
+#aboutMe {
+
+  .profilePic {
+    height: 320px;
+    width: auto;
+    margin: auto;
+    position: absolute;
+    bottom: 0;
+    @include centerMe(75% , auto , -50% , 0);
+    @media screen and (max-width: $break-small){
+      position: relative;
+      @include centerMe(0 , auto , 0 , 0);
+    }
+  }
+  img {
+    display: block;
+    width: 100%;
+  }
+  .mouse {
+    width: 50px !important;
+    height: auto;
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+    @media screen and (max-width: $break-medium){
+      display: none
+    }
+  }
+  h3 {
+    font-size: 3rem;
+    text-transform: none;
+    padding-top: 0;
+    padding-bottom: 25px;
+    margin: 0
+  }
+  .riga {
+    margin: 0 0 60px;
+    padding-bottom: 30px;
+    width: 100%;
+    position: relative;
+    border-bottom: 1px solid #ededed;
+    float: left;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    @media screen and (max-width: $break-small) {
+      margin: 0 0 50px;
+    }
+  }
+}
+
+
+.ui-view-container {
+  position: absolute;
+  width: 100%;
+  overflow: hidden;
+  height: 100%;
+  top: 0;
+}
+
+[ui-view].ng-enter, [ui-view].ng-leave , [ui-view].ng-enter-active , [ui-view].ng-leave-active {
+  height: 100%;
+  position: absolute;
+  top:0;
+  width: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden
+}
+
+@keyframes fadeOut {
+  0% { opacity:1}
+  50% { opacity:0; }
+  100% { opacity:0 }
+}
+
+@-webkit-keyframes fadeOut {
+  0% { opacity:1}
+  50% { opacity:0; }
+  100% { opacity:0 }
+}
+
+@keyframes fadeIn {
+  0% { opacity:0}
+  50% { opacity:0 }
+  100% { opacity:1 }
+}
+
+@-webkit-keyframes fadeIn {
+  0% { opacity:0}
+  50% { opacity:0}
+  100% { opacity:1}
+}
+
+[ui-view].ng-enter{
+  opacity: 0;
+  animation: fadeIn 1s linear;
+  -webkit-animation: fadeIn 1s linear;
+}
+
+[ui-view].ng-leave {
+  opacity: 1;
+  animation: fadeOut 1s linear;
+  -webkit-animation: fadeOut 1s linear;
+}
+
+
+
+#menu.ng-enter{
+  opacity: 0;
+  @include animation(menuIn 0.5s ease)
+}
+
+#menu.ng-leave {
+  opacity: 0;
+  @include animation(menuOut 0.5s ease)
+}
+
+@keyframes menuIn {
+  0% { opacity:0}
+  50% { opacity:0 }
+  100% { opacity:1 }
+}
+
+@-webkit-keyframes menuIn {
+  0% { opacity:0}
+  50% { opacity:0}
+  100% { opacity:1}
+}
+
+@keyframes menuOut {
+  0% { opacity:1}
+  20% { opacity:0 }
+  100% { opacity:0 }
+}
+
+@-webkit-keyframes menuOut {
+  0% { opacity:1}
+  50% { opacity:0}
+  100% { opacity:0}
+}
+
+#menu {
+  width: 100%;
+  height: calc( 100% - 100px );
+  top: 100px;
+  position: fixed;
+  overflow: auto;
+  z-index: 9;
+  left: 0;
+  h2 {
+    text-align: center;
+    font-size: 4.5rem
+  }
+  ul {
+    list-style-type: none;
+    padding: 20px;
+    margin: 0 auto;
+    position: absolute;
+    @include centerMe(50%, 50%, -50%, -50%);
+    @media screen and (max-width: $break-medium) {
+      position: relative;
+      @include centerMe(0 ,0 ,0 ,0)
+    }
+    li {
+      padding: 20px;
+      border-bottom: 1px solid #ededed;
+      &:last-of-type {
+        border: none
+      }
+    }
+  }
+}
+
+.smaller {
+  opacity: 0.05;
+  @include transform(scale(0.6))
+}
+
+
+textarea {
+  border: 2px solid rgb(238, 238, 238);
+  resize: none;
+  min-height: 200px;
+}
+
+#form {
+  padding: 20px;
+  background: rgba(0,0,0,0.1);
+  @include border-radius(3px);
+  button {
+    cursor: pointer;
+    background: white;
+    border: none;
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    @include border-radius(50%);
+    @include box-shadow(rgba(0,0,0,0.2) -2px 2px 2px);
+    @include transition(0.3s);
+    margin: 20px auto 0;
+    display: block;
+    font-size: 2rem;
+    color: rgba(0,0,0,0.5);
+    outline: none !important;
+    span {
+      display: block;
+    }
+    span::before {
+      font-size: 4rem;
+    }
+    &:hover {
+      color: black
+    }
+    &:active {
+      @include box-shadow(none);
+      background: black;
+      color: white;
+    }
+  }
+  .result {
+    background: white;
+    font-size: 2rem;
+    text-align: center;
+    @include border-radius(3px);
+    p {
+      margin: 10px;
+      padding: 10px
+    }
+    span {
+      cursor: pointer
+    }
+  }
+}
+
+input , textarea {
+  width: 100%;
+  @include border-radius(3px);
+  display: block;
+  margin: 0 auto 20px;
+  padding: 10px;
+  font-size: 2rem;
+  outline: none !important;
+  border: 1px solid #ededed;
+}
+
+textarea {
+  margin-bottom: 0
+}
+
+//jscrollpane
+
+.jspContainer
+{
+  overflow: hidden;
+  position: relative;
+}
+
+.jspPane
+{
+  position: absolute;
+  width: 100% !important;
+  margin: 0 !important
+}
+
+.jspVerticalBar
+{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 100%;
+  background: transparent;
+  opacity: 0.2;
+  @include transition(0.2s);
+  &:hover {
+    opacity: 1
+  }
+  @media screen and (max-width: $break-medium) {
+    display: none;
+  }
+}
+
+.jspHorizontalBar
+{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 16px;
+  background: red;
+  display: none;
+}
+
+.jspCap
+{
+  display: none;
+}
+
+.jspHorizontalBar .jspCap
+{
+  float: left;
+}
+
+.jspTrack
+{
+  background: transparent;
+  position: relative;
+}
+
+.jspDrag
+{
+  background: rgba(0,0,0,0.4);
+  position: relative;
+  @include border-radius(7px);
+  top: 0;
+  left: 10px;
+  cursor: pointer;
+  width: 5px
+}
+
+.jspHorizontalBar .jspTrack,
+.jspHorizontalBar .jspDrag
+{
+  float: left;
+  height: 100%;
+}
+
+.jspArrow
+{
+  background: #50506d;
+  text-indent: -20000px;
+  display: block;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+
+.jspArrow.jspDisabled
+{
+  cursor: default;
+  background: #80808d;
+}
+
+.jspVerticalBar .jspArrow
+{
+  height: 16px;
+}
+
+.jspHorizontalBar .jspArrow
+{
+  width: 16px;
+  float: left;
+  height: 100%;
+}
+
+.jspVerticalBar .jspArrow:focus
+{
+  outline: none;
+}
+
+.jspCorner
+{
+  background: #eeeef4;
+  float: left;
+  height: 100%;
+}
+
+/* Yuk! CSS Hack for IE6 3 pixel bug :( */
+* html .jspCorner
+{
+  margin: 0 -3px 0 0;
+}
+
+#contacts {
+  padding-top: 30px;
+  @media screen and (max-width: $break-small) {
+    padding-top: 0
+  }
+  span {
+    font-size: 3rem;
+    height: 3rem;
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: 30px
+  }
+
+  p {
+    margin: 0 0 40px;
+    font-size: 2rem
+  }
+
+  .socicon {
+    font-family: 'socicon' !important;
+    border-top: 1px solid #ededed;
+    line-height: 0;
+    border-bottom: 1px solid #ededed;
+    padding: 40px 0;
+    margin: 20px 0;
+    span {
+      float: left;
+      width: 25%;
+      display: block;
+      margin: 0
+    }
+  }
+
+
+}
+
+@font-face {
+  font-family: 'socicon';
+  src: url('../../fonts/socicon.eot');
+  src: url('../../fonts/socicon.eot?#iefix') format('embedded-opentype'),
+  url('../../fonts/socicon.woff') format('woff'),
+  url('../../fonts/socicon.ttf') format('truetype'),
+  url('../../fonts/socicon.svg#sociconregular') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+
+@mixin menuButton($size , $color , $hover){
+  position: relative;
+  height: $size;
+  width: $size;
+  cursor: pointer;
+  span {
+    @include transition(0.2s);
+    @include border-radius(3px);
+    display: block;
+    height: 5px;
+    width: 100%;
+    position: absolute;
+    background: $color;
+    left: 0;
+    top: calc( 50% - 2.5px );
+    &:first-of-type {
+      top: 2.5px;
+    }
+    &:last-of-type {
+      top: calc( 100% - 7.5px );
+    }
+  }
+  &:hover {
+    span {
+      background: $hover;
+      &:first-of-type {
+        top: 0;
+      }
+      &:last-of-type {
+        top: calc( 100% - 5px );
+      }
+    }
+  }
+  &.active {
+    span {
+      position: absolute;
+      background: $color;
+      width: 110%;
+      top: 48%;
+      left: 0;
+      @include transform(rotate(45deg));
+      &:first-of-type {
+        top: 48%;
+        @include transform(rotate(45deg));
+      }
+      &:last-of-type {
+        top: 48%;
+        @include transform(rotate(135deg));
+      }
+    }
+  }
+}
+
+.menuButton {
+  @include menuButton(35px , black , black);
+  float: right;
+  margin: 32px 0 32px 25px;
+}
+
+
+
+
+
+
+//CUBO
+
+$size: 250px;
+$lati: 6; // sides of dodecahedron
+
+$image:
+url('../../../img/html5.png'),
+url('../../../img/css3.png'),
+url('../../../img/jQuery.png'),
+url('../../../img/angular.png'),
+url('../../../img/js.png'),
+url('../../../img/wordpress.png');
+
+.containerCube {
+  height: (1.6*$size);
+  position: relative;
+  @media screen and (min-width: $break-small) and (max-width: $break-medium){
+    @include transform(scale(0.75));
+  }
+  @media screen and (max-width: 480px){
+    @include transform(scale(0.75));
+  }
+}
+
+.wrapCube {
+  width: $size;
+  height: $size;
+  @extend .centerMe;
+  perspective: 1200px;
+}
+
+#cube {
+  width: $size;
+  height: $size;
+  position: absolute;
+  transform-style: preserve-3d;
+  cursor: pointer;
+}
+
+.initial {
+  @include animation(rot 5s infinite);
+  @include transition(0.5s);
+}
+
+@for $i from 0 to $lati {
+  #cube figure:nth-child(#{$i + 1}) {
+    background-image: nth($image, $i + 1);
+    background-size: 50%;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+}
+
+#cube figure {
+  width: $size;
+  border: 1px solid #ededed;
+  height: $size;
+  display: block;
+  position: absolute;
+  background: rgba(0,0,0,0.05);
+  @include backface-visibility(hidden);
+  img {
+    width: 40%;
+    height: auto;
+    @extend .centerMe;
+    z-index: -1;
+  }
+}
+
+#cube {@include transform(rotateY(45deg) rotateX(34deg) ); }
+
+@keyframes rot {
+  0% {transform: rotateY(45deg) rotateX(34deg);}
+  33% { transform: rotateY(40deg) rotateX(34deg);}
+  66% { transform: rotateY(40deg) rotateX(30deg);}
+  100% { transform: rotateY(45deg) rotateX(34deg);}
+};
+
+#cube .front  { @include transform( rotateY(   0deg ) translateZ( $size/2 )); }
+#cube .back   { @include transform( rotateX( 180deg ) translateZ( $size/2 )); }
+#cube .right  { @include transform( rotateY(  90deg ) translateZ( $size/2 )); }
+#cube .left   { @include transform( rotateY( -90deg ) translateZ( $size/2 )); }
+#cube .top    { @include transform( rotateX(  90deg ) translateZ( $size/2 )); }
+#cube .bottom { @include transform( rotateX( -90deg ) translateZ( $size/2 )); }
+
+
+
+
+
+svg {
+  max-width: 100%
+}
+
+#Layer_4 {
+  @extend .centerMe
+}

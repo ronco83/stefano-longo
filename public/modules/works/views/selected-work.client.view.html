@@ -1,0 +1,18 @@
+<section single class="work">
+	<div class="container">
+		<div class="row">
+			<h1 class="colonna-sm-12" data-ng-bind="selectedWork.projectName"></h1>
+			<div class="colonna-lg-12 description">
+				<p multi-language="it" ng-bind-html="selectedWork.projectDescription"></p>
+				<p multi-language="en" ng-bind-html="selectedWork.projectDescriptionen"></p>
+			</div>
+		</div>
+	</div>
+	<div ng-hide="selectedWork.projectName == '' || selectedWork.projectName == null" portfolio-slider="horizontal" class="full-width relative workslider">
+		<ul>
+			<li ng-repeat="photo in selectedWork.projectImages">
+				<img ng-src="/img/{{photo}}.png"/>
+			</li>
+		</ul>
+	</div>
+</section>

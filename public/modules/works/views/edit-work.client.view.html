@@ -1,0 +1,51 @@
+<section class="container" style="background: white" data-ng-controller="WorksController" data-ng-init="findOne()">
+    <div class="page-header">
+        <h1>Edit Work</h1>
+    </div>
+    <div class="col-md-12">
+        <form class="form-horizontal" data-ng-submit="update()" novalidate>
+            <fieldset>
+                <div class="form-group">
+                    <div class="controls">
+                        <input type="text" data-ng-model="work.projectName" class="form-control" placeholder="Name" required>
+                    </div>
+                    <br/>
+                    <div class="controls">
+                        <textarea data-ng-model="work.projectDescription" class="form-control" placeholder="Description" required></textarea>
+                    </div>
+                    <br/>
+                    <div class="controls">
+                        <textarea data-ng-model="work.projectShortDescription" class="form-control" placeholder="short Description" required></textarea>
+                    </div>
+                    <br/>
+                    <div class="controls">
+                        <textarea data-ng-model="work.projectDescriptionen" class="form-control" placeholder="Description" required></textarea>
+                    </div>
+                    <br/>
+                    <div class="controls">
+                        <textarea data-ng-model="work.projectShortDescriptionen" class="form-control" placeholder="short Description" required></textarea>
+                    </div>
+                    <br/>
+                    <div class="controls">
+                        <input data-ng-model="work.projectSliderImg" type="text" placeholder="sliderImage" required>
+                    </div>
+                    <br/>
+                    <div add-photo update="true" class="controls">
+                        <a href="#">add photo</a>
+                    </div>
+                    <div class="controls">
+                        <input type="number" data-ng-model="work.projectOrder" class="form-control" placeholder="Order" required>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Update" class="btn btn-default">
+                </div>
+                <div data-ng-show="error" class="text-danger">
+                    <strong data-ng-bind="error"></strong>
+                </div>
+            </fieldset>
+        </form>
+    </div>
+</section>
+
+

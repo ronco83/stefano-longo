@@ -1,0 +1,18 @@
+<header general-menu id="header" class="container">
+    <div class="row">
+        <div class="colonna-sm-12">
+
+            <h3><a ng-click="lngCtrl.openMenu = false" ng-href="/#!/">STEFANO LONGO</a></h3>
+            <div id="menuButton" ng-class="{active: lngCtrl.openMenu==true}" ng-click="lngCtrl.toggleMenu()" class="menuButton">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            <span class="languageSwitch">
+                <span ng-click="lngCtrl.langSwitch('en')" multi-language="it">EN</span>
+                <span ng-click="lngCtrl.langSwitch('it')" multi-language="en">IT</span>
+            </span>
+        </div>
+    </div>
+</header>
+<div class="whiteBg"></div>

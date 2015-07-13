@@ -1,0 +1,50 @@
+<section id="worksList" data-ng-controller="WorksController as workCtrl" data-ng-init="find()">
+    <div class="container">
+        <div class="row">
+            <h1 class="colonna-sm-12">
+                <span multi-language="en">Works</span>
+                <span multi-language="it">Progetti</span>
+            </h1>
+        </div>
+    </div>
+    <div class="colonna-sm-12">
+        <div portfolio-slider="fade" class="sliders" id="sliders">
+            <ul>
+                <li data-ng-repeat="work in works | orderBy: '-projectOrder'">
+                    <img ng-src="/img/{{work.projectSliderImg}}.png">
+                    <div class="carousel-caption">
+                        <h3 data-ng-bind="work.projectName"></h3>
+                        <p multi-language="it" ng-bind-html="work.projectShortDescription"></p>
+                        <p multi-language="en" ng-bind-html="work.projectShortDescriptionen"></p>
+                        <p>
+                            <a ng-click="workCtrl.selectWork(work._id)" ng-href="#!/work">
+                                <span multi-language="it">VISUALIZZA</span>
+                                <span multi-language="en">VIEW</span>
+                            </a>
+                        </p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div work-boxes class="colonna-lg-4 colonna-md-6" data-ng-repeat="work in works | orderBy: '-projectOrder'">
+                <div class="works">
+                    <div>
+                        <!--<a data-ng-href="#!/works/{{work._id}}">APRI</a>-->
+                        <h3 data-ng-bind="work.projectName"></h3>
+                        <p multi-language="it" ng-bind-html="work.projectShortDescription"></p>
+                        <p multi-language="en" ng-bind-html="work.projectShortDescriptionen"></p>
+                        <p>
+                            <a ng-click="workCtrl.selectWork(work._id)" ng-href="#!/work">
+                                <span multi-language="it">VISUALIZZA</span>
+                                <span multi-language="en">VIEW</span>
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

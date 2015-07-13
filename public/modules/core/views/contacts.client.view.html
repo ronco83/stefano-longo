@@ -1,0 +1,49 @@
+<section>
+
+    <div class="container">
+
+        <h1 class="colonna-sm-12">
+            <span multi-language="en">Contacts</span>
+            <span multi-language="it">Contatti</span>
+        </h1>
+
+        <div class="row" id="contactsPage">
+
+            <div class="colonna-lg-6" id="contacts">
+                <p><span class="glyphicon glyphicon-phone"></span>+39 328 61 62 088</p>
+                <p><span class="glyphicon glyphicon-envelope"></span>stefano.longo83<span style="display: none">null</span>@gmail.com</p>
+                <div class="socicon">
+                    <span><a target="_blank" title="Stefano Longo - facebook" href="https://www.facebook.com/R0NC0">b</a></span>
+                    <span><a target="_blank" title="Stefano Longo - google+" href="https://plus.google.com/u/3/115716188732040512445/posts">c</a></span>
+                    <span><a target="_blank" title="Stefano Longo - LinkedIn" href="https://www.linkedin.com/e/fpf/87146022">j</a></span>
+                    <span><a target="_blank" title="Stefano Longo - Skype chat" href="skype:ronco_83?chat">g</a></span>
+                </div>
+            </div>
+
+            <div contact-form id="form" class="colonna-lg-6" ng-controller="FormController as formCtrl">
+                <form name="contacts" email-match novalidate ng-model="formCtrl.mailForm" ng-submit="formCtrl.sendMail()">
+                    <fieldset ng-if="result == null">
+                        <input placeholder="{{placeholder.name}}" ng-model="formCtrl.contactName">
+                        <input placeholder="{{placeholder.email}}" name="email" id="email" ng-model="formCtrl.email" ng-pattern="/^[_a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,4})$/" type="email" required>
+                        <input placeholder="{{placeholder.subject}}" name="subject" data-ng-model="formCtrl.subject" type="text" required>
+                        <input placeholder="surname" type="text" name="surname" class="thepot" data-ng-model="formCtrl.surname" value="" alt="if you fill this field out then your email will not be sent"/>
+                        <textarea placeholder="{{placeholder.message}}" name="message" data-ng-model="formCtrl.message" required></textarea>
+
+                        <button type="submit" ng-if="contacts.$valid">
+                            <span class="glyphicon glyphicon-send"></span>
+                        </button>
+
+                    </fieldset>
+                    <div ng-hide="result == null" class="result">
+                        <p>{{result}}</p>
+                        <p><a ng-href="" ng-click="formCtrl.reset()">
+                            <span multi-language="it">Invia un nuovo messaggio</span>
+                            <span multi-language="en">Send a new message</span>
+                        </a></p>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</section>

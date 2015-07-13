@@ -1,0 +1,29 @@
+<section data-ng-controller="WorksController" data-ng-init="findOne()">
+	<div class="page-header">
+		<h1 data-ng-bind="work.projectName"></h1>
+	</div>
+	<div class="pull-right" data-ng-show="((authentication.user) && (authentication.user._id == work.user._id))">
+		<a class="btn btn-primary" href="/#!/works/{{work._id}}/edit">
+			<i class="glyphicon glyphicon-edit"></i>
+		</a>
+		<a class="btn btn-primary" data-ng-click="remove();">
+			<i class="glyphicon glyphicon-trash"></i>
+		</a>
+	</div>
+
+	<p ng-bind-html="work.projectDescription"></p>
+
+	<figure ng-repeat="photo in work.projectImages">
+		<img ng-src="{{photo}}"/>
+	</figure>
+
+	<small>
+		<em class="text-muted">
+			Posted on
+			<span data-ng-bind="work.created | date:'mediumDate'"></span>
+			by
+			<span data-ng-bind="work.user.displayName"></span>
+		</em>
+	</small>
+	<a ng-click="cancel()">CHIUDI</a>
+</section>
