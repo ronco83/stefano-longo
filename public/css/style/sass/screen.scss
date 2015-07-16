@@ -200,8 +200,13 @@ a , a:visited{
     padding: 0 !important;
     float:left;
     color: white;
-    @media screen and (max-width: 480px) {
+    @media screen and (max-width: $break-small) {
       letter-spacing: 5px;
+      &.home {
+        letter-spacing: 10px;
+        float: none;
+        text-align: center
+      }
     }
     a {
       color: black
@@ -332,7 +337,7 @@ body .menuHp{
   }
 
   @media screen and(max-width: $break-small) and (orientation: landscape) {
-    margin: 40px 0 0;
+    margin: 40px 0;
   }
 
   li {
@@ -389,6 +394,9 @@ body .menuHp{
         fill: white;
       }
     }
+    @media screen and (max-width:$break-small) {
+      display: none;
+    }
   }
 
   .back {
@@ -411,7 +419,8 @@ body .menuHp{
     @media screen and (max-width:$break-small) {
       font-size: 3.5rem;
       margin-top: calc( 50% - 1.75rem );
-      color: white
+      color: white;
+      @include transform(rotateY(0) !important) ;
     }
     @media screen and (max-width:480px) {
       font-size: 2.5rem;
@@ -694,12 +703,14 @@ body .claim {
     bottom: 15%;
     border: none;
   }
-
   @media screen and (max-width: $break-small) {
-    border: none;
-    padding: 20px;
+    border-top: 1px solid #ededed;
+    padding: 50px 10px 10px;
     margin: 10px auto 0;
-    font-size: 2rem;
+    font-size: 3.5rem;
+  }
+  @media screen and (max-width: 480px) {
+    font-size: 2.5rem;
   }
 }
 

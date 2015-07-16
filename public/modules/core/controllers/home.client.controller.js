@@ -52,15 +52,31 @@ angular.module('core')
 				TweenMax.set(elem.find('div'), {perspective:800});
 				TweenLite.set([".back", ".front"], {transformStyle:"preserve-3d"});
 
-				elem.on('mouseenter' , function(){
-					TweenMax.fromTo(elem.find("span"), 1.5, {scale: 1}, {scale:0 , rotationY:180, ease:Back.easeInOut.config(1.5)});
-					TweenMax.fromTo(elem.find("a"), 1.5, {scale: 0}, {scale:1 , rotationY:360, ease:Back.easeInOut.config(1.5)});
-				});
+				if ($(window).width()>640) {
+					elem.on('mouseenter' , function(){
+						TweenMax.fromTo(elem.find("span"), 1.5, {scale: 1}, {scale:0 , rotationY:180, ease:Back.easeInOut.config(1.5)});
+						TweenMax.fromTo(elem.find("a"), 1.5, {scale: 0}, {scale:1 , rotationY:360, ease:Back.easeInOut.config(1.5)});
+					});
 
-				elem.on('mouseleave' , function() {
-					TweenMax.fromTo(elem.find("span"), 1.5, {scale: 0} , { scale: 1, rotationY: 0, transformStyle: "preserve-3d" , ease: Back.easeInOut.config(1)});
-					TweenMax.to(elem.find("a"), 1.5, {scale:0 , rotationY:180 , transformStyle: "preserve-3d",  ease:Back.easeInOut.config(1)});
-				});
+					elem.on('mouseleave' , function() {
+						TweenMax.fromTo(elem.find("span"), 1.5, {scale: 0} , { scale: 1, rotationY: 0, transformStyle: "preserve-3d" , ease: Back.easeInOut.config(1)});
+						TweenMax.to(elem.find("a"), 1.5, {scale:0 , rotationY:180 , transformStyle: "preserve-3d",  ease:Back.easeInOut.config(1)});
+					});
+				}
+
+				$(window).resize(function(){
+					if ($(window).width()>640) {
+						elem.on('mouseenter' , function(){
+							TweenMax.fromTo(elem.find("span"), 1.5, {scale: 1}, {scale:0 , rotationY:180, ease:Back.easeInOut.config(1.5)});
+							TweenMax.fromTo(elem.find("a"), 1.5, {scale: 0}, {scale:1 , rotationY:360, ease:Back.easeInOut.config(1.5)});
+						});
+
+						elem.on('mouseleave' , function() {
+							TweenMax.fromTo(elem.find("span"), 1.5, {scale: 0} , { scale: 1, rotationY: 0, transformStyle: "preserve-3d" , ease: Back.easeInOut.config(1)});
+							TweenMax.to(elem.find("a"), 1.5, {scale:0 , rotationY:180 , transformStyle: "preserve-3d",  ease:Back.easeInOut.config(1)});
+						});
+					}
+				})
 			}
 		}
 	})
@@ -86,24 +102,6 @@ angular.module('core')
 
 				scope.lngCtrl.openMenu = false;
 
-				if ($(window).width()< 1280 ){
-
-					var myElement = document.getElementById('content');
-
-					var mc = new Hammer(myElement);
-
-					mc.get('pan').set({ direction: Hammer.DIRECTION_ALL });
-
-					mc.on("panup", function(ev) {
-						$('.content').css('border-top-width' , 0);
-						$("#header").css('opacity',  0);
-					});
-
-					mc.on("pandown", function(ev) {
-						$('.content').css('border-top-width' , 100), $("#header").css('opacity' , 1)
-					});
-
-				}
 			}
 		}
 	})
