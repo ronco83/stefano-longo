@@ -595,7 +595,8 @@ body .menuHp{
       width: 100%;
       max-width: 1280px;
       margin: auto;
-      position: relative
+      position: relative;
+      display: block;
     }
     .bx-wrapper img {
       visibility: visible;
