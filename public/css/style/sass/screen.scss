@@ -455,6 +455,7 @@ body .menuHp{
     max-width: 1200px;
     position: relative;
     margin: auto;
+    @include transition(0.2s);
     display: block;
     padding-bottom: 50px;
     @media screen and (max-width: $break-large){

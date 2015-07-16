@@ -136,7 +136,7 @@ angular.module('works').controller('WorksController', ['$scope', '$stateParams',
 					"mouseleave": function(){$('.carousel-caption').css('opacity' , 0); $('.sliders img').css('opacity' , 1);}
 				});
 
-			},2000);
+			},3000);
 
 		}
 	}
