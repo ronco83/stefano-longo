@@ -450,20 +450,19 @@ body .menuHp{
     display: none
   }
   img {
-    opacity: 0;
+    visibility: hidden;
     width: 95%;
     max-width: 1200px;
     position: relative;
     margin: auto;
     display: block;
-    @include transition(0.3s);
     padding-bottom: 50px;
     @media screen and (max-width: $break-large){
       width: 100%;
     }
   }
   .bx-wrapper img {
-    opacity: 1
+    visibility: visible
   }
   ul {
     padding: 0 !important;
@@ -591,11 +590,14 @@ body .menuHp{
 .work {
   .workslider {
     img {
+      visibility: hidden;
       width: 100%;
       max-width: 1280px;
-      display: block;
       margin: auto;
       position: relative
+    }
+    .bx-wrapper img {
+      visibility: visible;
     }
   }
   .roles {
