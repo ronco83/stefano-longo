@@ -110,7 +110,7 @@ angular.module('works').controller('WorksController', ['$scope', '$stateParams',
 				if (scope.selectedWork.projectName == "" || scope.selectedWork.projectName == null){
 					window.location.href = "/#!/works"
 				}
-			},500);
+			},4000);
 		}
 	}
 })
@@ -136,7 +136,7 @@ angular.module('works').controller('WorksController', ['$scope', '$stateParams',
 					"mouseleave": function(){$('.carousel-caption').css('opacity' , 0); $('.sliders img').css('opacity' , 1);}
 				});
 
-			},500);
+			},2000);
 
 		}
 	}
