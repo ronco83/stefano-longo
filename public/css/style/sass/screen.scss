@@ -202,11 +202,6 @@ a , a:visited{
     color: white;
     @media screen and (max-width: $break-small) {
       letter-spacing: 5px;
-      &.home {
-        letter-spacing: 10px;
-        float: none;
-        text-align: center
-      }
     }
     a {
       color: black
@@ -291,7 +286,7 @@ a , a:visited{
   &.home {
     color: white;
     @media screen and (max-width: $break-small) {
-      display: none;
+      display: block;
     }
   }
   &.inMenu {
@@ -588,8 +583,17 @@ body .menuHp{
   }
 }
 
+cube {
+  @media screen and(max-width: $break-small){
+    display: none
+  }
+}
+
 .work {
   .workslider {
+    ul {
+      list-style-type: none;
+    }
     img {
       visibility: hidden;
       width: 100%;
