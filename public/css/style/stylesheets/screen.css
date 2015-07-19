@@ -2678,14 +2678,14 @@ a:hover, a:active, a:focus, a:visited:hover, a:visited:active, a:visited:focus {
 }
 /* line 156, ../sass/screen.scss */
 .background div:first-of-type {
-  background: url("../../../img/occhiali.jpg");
+  background: url("../../../img/occhiali.png");
   background-size: cover;
   background-position: center;
   opacity: 1 !important;
 }
 /* line 162, ../sass/screen.scss */
 .background div:nth-of-type(2) {
-  background: url("../../../img/html.jpg");
+  background: url("../../../img/html.png");
   background-size: cover;
   background-position: center;
 }
