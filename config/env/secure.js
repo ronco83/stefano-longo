@@ -18,7 +18,7 @@ module.exports = {
 				'public/lib/angular-bootstrap/ui-bootstrap-tpls.min.js'
 			]
 		},
-		css: 'public/dist/application.min.css',
+		css: 'public/dist/application.css',
 		js: 'public/dist/application.min.js'
 	},
 	facebook: {
