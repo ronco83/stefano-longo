@@ -35,7 +35,13 @@ module.exports = {
 			]
 		},
 		css: [
-			'public/modules/**/css/*.css'
+			'public/modules/**/css/*.css',
+			'public/css/style/stylesheets/screen.css',
+			'public/css/fonts/*.eot',
+			'public/css/fonts/*.svg',
+			'public/css/fonts/*.ttf',
+			'public/css/fonts/*.woff',
+			'public/css/fonts/*.woff2'
 		],
 		js: [
 			'public/config.js',
